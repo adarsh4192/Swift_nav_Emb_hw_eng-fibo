@@ -1,0 +1,53 @@
+/*Fibonacci numbers generation - I used array approach because it saves more computing as compared to traditional recursion method because the values once computed are saved in array*/
+
+#include <stdio.h>
+
+//space is allocated for 100 elements initially. can be changed accordingly
+int a[100];
+
+void main()
+{
+	int i,n,y;
+	int F(int);
+	int isprime(int,int);
+	
+	printf("Enter a number =");
+	scanf("%d",&n);
+	y=F(n);
+	printf("\nFibonacci series up to %d are %d %d %d ",n, a[0], a[1], a[2]);
+	
+	for(i=3;i<n;i++)
+	{
+		if(a[i]%3==0) printf("Buzz ");
+		else if(a[i]%5==0) printf("Fizz ");
+		else if(isprime(a[i],n)) printf("BuzzFizz ");
+		else printf("%d ",a[i]);
+	}
+	
+}
+
+int F(int n)
+{
+	int i;
+	a[0]=0;
+	a[1]=1;
+	for(i=2;i<n;i++)
+	{
+		a[i]=a[i-1]+a[i-2];
+	}
+	return 0;
+}
+
+int isprime(int y, int n)
+{
+	int i,flag;
+	flag=1;
+	for(i=2;i<=(n/2);++i)
+	{
+		if(y%i==0)
+			flag = 0;
+			break;
+	}
+	return flag;
+	
+}
